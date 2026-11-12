@@ -1,0 +1,2 @@
+'UniformHeatGuard.entropy_plus_uniform_KL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformHeatGuard.hK_forces_zero' depends on axioms: [propext, Classical.choice, Quot.sound]

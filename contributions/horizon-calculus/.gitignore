@@ -1,0 +1,8 @@
+.lake/
+*.olean
+*.ilean
+*.trace
+manuscript/*.aux
+manuscript/*.log
+manuscript/*.out
+manuscript/*.xdv

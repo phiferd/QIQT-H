@@ -1,0 +1,4 @@
+'NonuniformHeatWitness.shannon_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NonuniformHeatWitness.KL_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NonuniformHeatWitness.heat_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NonuniformHeatWitness.heat_derivative_positive' depends on axioms: [propext, Classical.choice, Quot.sound]

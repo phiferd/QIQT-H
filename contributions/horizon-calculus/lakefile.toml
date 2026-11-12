@@ -1,0 +1,13 @@
+name = "horizonCalculusPilot"
+version = "0.1.0"
+defaultTargets = ["HorizonPilot"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "5450b53e5ddc75d46418fabb605edbf36bd0beb6"
+
+[[lean_lib]]
+name = "HorizonPilot"
+roots = ["UniformHeatGuard", "NonuniformHeatWitness", "HorizonCalculus", "HalfLineCalculus", "CompactWitness"]

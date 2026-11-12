@@ -1,0 +1,8 @@
+'HorizonCalculus.openHalfLine_dilation_symplectic_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HorizonCalculus.halfLine_dilation_symplectic_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HorizonCalculus.dilation_density_zero_off_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HorizonCalculus.halfLine_zero_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HorizonCalculus.halfLine_energy_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HorizonCalculus.halfLine_density_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HorizonCalculus.halfLine_energy_nonpos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HorizonCalculus.halfLine_wrong_sign_rejected' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,8 @@
+'CompactWitness.profile_energy_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CompactWitness.kpvPairing_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CompactWitness.kpv_coefficient_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CompactWitness.concrete_wrong_sign_rejected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CompactWitness.kpv_wrong_sign_rejected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CompactWitness.pairing_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CompactWitness.energy_strictly_negative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CompactWitness.profile_deriv_center' depends on axioms: [propext, Classical.choice, Quot.sound]

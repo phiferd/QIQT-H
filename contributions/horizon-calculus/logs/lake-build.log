@@ -1,0 +1,34 @@
+ℹ [3342/3347] Built UniformHeatGuard (8.8s)
+info: UniformHeatGuard.lean:65:0: 'UniformHeatGuard.entropy_plus_uniform_KL' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UniformHeatGuard.lean:66:0: 'UniformHeatGuard.hK_forces_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [3343/3347] Built HorizonCalculus (8.0s)
+info: HorizonCalculus.lean:181:0: 'HorizonCalculus.test_dilation_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: HorizonCalculus.lean:182:0: 'HorizonCalculus.wrong_sign_rejected' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: HorizonCalculus.lean:183:0: 'HorizonCalculus.dilation_symplectic_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: HorizonCalculus.lean:184:0: 'HorizonCalculus.interval_parameter_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: HorizonCalculus.lean:185:0: 'HorizonCalculus.dilation_density_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: HorizonCalculus.lean:186:0: 'HorizonCalculus.integral_linearizedDensity' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [3344/3347] Built NonuniformHeatWitness (4.1s)
+info: NonuniformHeatWitness.lean:88:0: 'NonuniformHeatWitness.shannon_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: NonuniformHeatWitness.lean:89:0: 'NonuniformHeatWitness.KL_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: NonuniformHeatWitness.lean:90:0: 'NonuniformHeatWitness.heat_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: NonuniformHeatWitness.lean:91:0: 'NonuniformHeatWitness.heat_derivative_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [3345/3347] Built HalfLineCalculus (3.0s)
+info: HalfLineCalculus.lean:209:0: 'HorizonCalculus.openHalfLine_dilation_symplectic_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: HalfLineCalculus.lean:210:0: 'HorizonCalculus.halfLine_dilation_symplectic_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: HalfLineCalculus.lean:211:0: 'HorizonCalculus.dilation_density_zero_off_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: HalfLineCalculus.lean:212:0: 'HorizonCalculus.halfLine_zero_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: HalfLineCalculus.lean:213:0: 'HorizonCalculus.halfLine_energy_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: HalfLineCalculus.lean:214:0: 'HorizonCalculus.halfLine_density_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: HalfLineCalculus.lean:215:0: 'HorizonCalculus.halfLine_energy_nonpos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: HalfLineCalculus.lean:216:0: 'HorizonCalculus.halfLine_wrong_sign_rejected' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [3346/3347] Built CompactWitness (3.9s)
+info: CompactWitness.lean:159:0: 'CompactWitness.profile_energy_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompactWitness.lean:160:0: 'CompactWitness.kpvPairing_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompactWitness.lean:161:0: 'CompactWitness.kpv_coefficient_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompactWitness.lean:162:0: 'CompactWitness.concrete_wrong_sign_rejected' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompactWitness.lean:163:0: 'CompactWitness.kpv_wrong_sign_rejected' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompactWitness.lean:164:0: 'CompactWitness.pairing_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompactWitness.lean:165:0: 'CompactWitness.energy_strictly_negative' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompactWitness.lean:166:0: 'CompactWitness.profile_deriv_center' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (3347 jobs).

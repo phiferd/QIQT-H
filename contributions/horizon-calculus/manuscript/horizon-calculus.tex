@@ -1,0 +1,133 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref}
+\hypersetup{colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\R}{\mathbb R}
+\title{Convention-sensitive horizon calculus in Lean:\\a reproducible local consistency check}
+\author{Draft for contributor review\\\small Contributor name and ORCID to be confirmed}
+\date{12 November 2026 --- review draft, not submitted}
+\begin{document}
+\maketitle
+\begin{abstract}
+We isolate a one-dimensional calculus identity used in horizon relative-entropy calculations. For compactly supported $C^2$ data, a dilation derivative of a symplectic pairing reduces to a weighted square integral, with a sign fixed by the pairing convention. A Lean formalization checks the actual half-line integral, differentiating under the integral and eliminating boundary terms rather than assuming the desired identity. The result provides a localized consistency test for a printed combination of conventions in Dorau and Much, with a consistent comparison convention in Kurpicz, Pinamonti and Verch. It does not identify the functional with quantum relative entropy or formalize a derivation of Einstein's equations. The elementary identity is not claimed as new; the contribution is its explicit, reproducible verification boundary and controls.
+\end{abstract}
+
+\section{The isolated mathematical statement}
+For $c\in\R$ and $f\in C_c^2(\R;\R)$, let
+\[
+ D_t^c f(u)=f(e^{ct}u),\qquad
+ E(f)=\int_{-\infty}^0 u\,f'(u)^2\,du.
+\]
+Use ordinary Lebesgue integration and define
+\[
+ \sigma_+(g,h)=\int_{-\infty}^0(gh'-hg')\,du,
+ \qquad \sigma_-=-\sigma_+.
+\]
+The notation $\sigma_+(D_t^c f,f)$ includes the derivative of $D_t^c f$ with respect to $u$: its second integrand term is
+$f(u)e^{ct}f'(e^{ct}u)$.
+\begin{theorem}\label{thm:main}
+For the preceding definitions,
+\[
+ \left.\frac{d}{dt}\right|_{t=0}\sigma_+(D_t^c f,f)=2cE(f),
+ \qquad
+ \left.\frac{d}{dt}\right|_{t=0}\sigma_-(D_t^c f,f)=-2cE(f).
+\]
+All displayed integrals exist. No condition $f(0)=0$ is needed.
+\end{theorem}
+\begin{proof}
+Pointwise differentiation of the integrand at zero gives
+\[
+ c\{u(f')^2-ff'-uff''\}.
+\]
+Each term of the original parameter-family integrand contains the stationary factor $f(u)$ or $f'(u)$. Since the support of $f'$ is contained in the support of $f$, the integrand is supported in a fixed compact set for every $t$. On a compact parameter neighborhood, joint continuity of its parameter derivative supplies an integrable dominating bound. Differentiation under the integral is therefore justified.
+
+The identity
+\[
+ (uff')'=ff'+u(f')^2+uff''
+\]
+reduces the differentiated integrand to
+$c\{2u(f')^2-(uff')'\}$. The boundary term vanishes at the negative end by compact support and at zero by its factor $u$. This proves the first identity; the second follows by negation.
+\end{proof}
+
+The weighted energy is nonpositive. If $f'$ is nonzero at some strictly negative point, continuity makes $E(f)<0$. Thus a nonzero negative-half-line profile distinguishes the two signs; the zero profile cannot serve as a sign test.
+
+\paragraph{Concrete nonzero control.}
+The new artifact \texttt{CompactWitness.lean} uses a library bump $\chi$ centered at $-2$, equal to one on radius $1/4$ and supported within radius $1/2$, and sets $f(u)=u\chi(u)$. The formal result establishes $C^3$ regularity, compact support strictly in the negative half-line, and $f'(-2)=1$. It proves $E(f)<0$, not a closed-form numerical value for that integral. For $c=2\pi$, the $\sigma_+$ derivative is $4\pi E(f)<0$ and the $\sigma_-$ derivative is $-4\pi E(f)>0$. Opposite-sign derivative claims are rejected by uniqueness of derivatives. The library bump is not presented as a closed-form elementary function.
+
+The witness has also passed separate AI-assisted statement review and recompilation. This is not a claim of human peer review.
+
+\section{Application to printed conventions}
+In Dorau--Much~\cite{DM}, Eq.~(5) uses $\sigma_+$, Eq.~(11) uses the positive one-half derivative, and the following dilation has $c=2\pi$. Theorem~\ref{thm:main} gives $+2\pi E(f)$ for that combination, whereas their Eq.~(12) displays $-2\pi E(f)$. This is a localized mismatch between the printed formulas for nontrivial data. The calculation does not determine the authors' intended correction.
+
+The cited predecessor~\cite{KPV}, Eqs.~(50), (70), and (73), instead uses $\sigma_-$ with positive dilation and obtains the negative coefficient consistently. Its two-point prescription, Eq.~(42), also differs from Dorau--Much Eq.~(3). Consequently, changing one sign without tracing the other conventions is not proposed as a complete physical repair.
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Convention & Pairing & Dilation rate & Half derivative\\
+\midrule
+Dorau--Much printed inputs & $\sigma_+$ & $+2\pi$ & $+2\pi E(f)$\\
+KPV comparison & $\sigma_-$ & $+2\pi$ & $-2\pi E(f)$\\
+Inverse dilation alternative & $\sigma_+$ & $-2\pi$ & $-2\pi E(f)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The last row is a mathematical alternative, not a verified identification of a quantum modular group. Consistent coordinate or orientation changes must transform the definitions as well; they do not negate the stated calculus identity while preserving its inputs.
+
+\section{What the Lean check establishes}
+The development separates pointwise differentiation, compact-domain domination, integration by parts, and extension to the whole negative half-line. It proves integrability separately, avoiding any dependence on the convention that a nonintegrable Bochner integral is assigned zero. The open and closed negative half-lines agree because their difference is a singleton of measure zero.
+
+The files were compiled with Lean \texttt{4.30.0-rc2} and Mathlib commit
+\begin{center}\texttt{5450b53e5ddc75d46418fabb605edbf36bd0beb6}.\end{center}
+A separate AI-assisted review recompiled the half-line artifact and inspected its assumptions. Printed dependencies were the standard Lean axioms \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}; this is not a claim of an axiom-free foundational development. No admitted target theorem is part of the check.
+
+\paragraph{Reproducibility record.}
+The present local artifact is \texttt{HalfLineCalculus.lean}, built on \texttt{HorizonCalculus.lean}. Its principal results, in namespace \texttt{HorizonCalculus}, are:
+\begin{flushleft}\small
+\path{halfLine_dilation_symplectic_derivative}\\
+\path{openHalfLine_dilation_symplectic_derivative}
+\end{flushleft}
+Its reviewed SHA-256 is
+\begin{center}\small\texttt{becef59e359eff9e590e963f9f8ef92f}\\
+\texttt{990d175be34f11b0edaa77626348257c}.\end{center}
+The new witness file has SHA-256
+\begin{center}\small\texttt{5810c97eedbddfc82140671513cf3aa67}\\
+\texttt{b4cf364d948eeac69709ab1304f94b0}.\end{center}
+Its key identifiers in namespace \texttt{CompactWitness} are
+\path{energy_strictly_negative}, \path{pairing_derivative},
+\path{kpvPairing_derivative}, \path{concrete_wrong_sign_rejected},
+and \path{kpv_wrong_sign_rejected}.
+
+\textbf{[Pending before submission: publish an authorized, immutable formalization archive with its complete imports, pinned build manifest, exact theorem names, reproduction command and logs; insert the public link here. Recompute hashes after any change.]}
+
+\section{Scope and prior work}
+This note concerns real one-dimensional calculus. It does not formalize transverse horizon geometry, a Klein--Gordon realization, the modular operator, Araki relative entropy, an entropy--area relation, curvature corrections, or Einstein's equations. Nor does it establish a defect in Lean's kernel. The paper comparison is a correspondence check between explicit formulas, not a disproof of a physical theory.
+
+The identity follows by standard differentiation and integration by parts, and the KPV convention supplies an earlier consistent occurrence. No priority is claimed for noticing a possible sign issue: prior community commentary~\cite{community} also raises concerns about sign, boundary, and domain control. That AI-generated commentary is cited for provenance, not used as mathematical evidence. The verification here rests on the stated proof, the checked artifact, and the primary texts.
+
+A separate finite-entropy audit found that $H(p)+D(p\Vert q)$ is constant when $q$ is uniform, and constructed a nonuniform reference with a nonzero derivative. Those observations concern a different finite formalization and are deliberately not presented as evidence against the quantum-field calculation in this note.
+
+\section*{Authorship and AI-use disclosure: review required}
+\textbf{[Contributor must confirm name, ORCID, authorship responsibility, license, and this disclosure before submission.]}
+The work was initiated and directed by Dan Phifer. AI assistants performed the literature inspection, mathematical derivations, Lean implementation, automated compilation, cross-checks, and preparation of this draft. Separate AI-assisted checks are not independent human peer review. This draft does not assert that the proposed contributor has personally validated every proof or completed manuscript review. The final disclosure should state the human review actually performed. AI systems are not listed as contributors.
+
+\begin{thebibliography}{9}
+\raggedright
+\bibitem{DM} P.~Dorau and A.~Much,
+\emph{From Quantum Relative Entropy to the Semiclassical Einstein Equations},
+Phys. Rev. Lett. \textbf{136}, 091602 (2026).
+\href{https://doi.org/10.1103/lmq8-nsty}{doi:10.1103/lmq8-nsty};
+\href{https://arxiv.org/abs/2510.24491v3}{arXiv:2510.24491v3} (3 March 2026).
+\bibitem{KPV} F.~Kurpicz, N.~Pinamonti and R.~Verch,
+\emph{Temperature and entropy-area relation of quantum matter near spherically symmetric outer trapping horizons},
+Lett. Math. Phys. \textbf{111}, 110 (2021).
+\href{https://doi.org/10.1007/s11005-021-01445-7}{doi:10.1007/s11005-021-01445-7};
+\href{https://arxiv.org/abs/2102.11547v2}{arXiv:2102.11547v2}.
+\bibitem{community} Theory of Everything community review,
+\emph{Semiclassical Einstein equations from quantum relative entropy},
+AI-generated commentary, accessed 12 November 2026.
+\url{https://theoryofeverything.ai/papers/semiclassical-einstein-equations-from-quantum-relative-entropy}.
+\end{thebibliography}
+\end{document}

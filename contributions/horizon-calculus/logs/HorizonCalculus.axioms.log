@@ -1,0 +1,6 @@
+'HorizonCalculus.test_dilation_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HorizonCalculus.wrong_sign_rejected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HorizonCalculus.dilation_symplectic_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HorizonCalculus.interval_parameter_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HorizonCalculus.dilation_density_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HorizonCalculus.integral_linearizedDensity' depends on axioms: [propext, Classical.choice, Quot.sound]
